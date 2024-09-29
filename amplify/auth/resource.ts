@@ -18,8 +18,8 @@ export const auth = defineAuth({
     "custom:household": {
       dataType: "String",
       mutable: true,
-      maxLen: 16,
-      minLen: 1,
+      maxLen: 24,
+      minLen: 8,
     },
   }
 });

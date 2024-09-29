@@ -4,16 +4,12 @@ import React from "react";
 import {
   AppLayout,
   BreadcrumbGroup,
-  Container,
-  ContentLayout,
   Flashbar,
-  Header,
-  HelpPanel,
-  Link,
   SideNavigation,
 } from "@cloudscape-design/components";
 import { I18nProvider } from "@cloudscape-design/components/i18n";
 import messages from "@cloudscape-design/components/i18n/messages/all.en";
+import { usePathname } from 'next/navigation';
 
 const LOCALE = "en";
 
@@ -27,6 +23,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
+  const breadcrumbs = pathname.split('/').filter(Boolean).map((path, index, arr) => ({
+    text: path.charAt(0).toUpperCase() + path.slice(1),
+    href: '/' + arr.slice(0, index + 1).join('/'),
+  }));
+
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -35,10 +38,7 @@ export default function RootLayout({
           <AppLayout
             breadcrumbs={
               <BreadcrumbGroup
-                items={[
-                  { text: "Home", href: "#" },
-                  { text: "Service", href: "#" },
-                ]}
+                items={[{ text: 'Home', href: '/' }, ...breadcrumbs]}
               />
             }
             navigationOpen={true}
@@ -63,10 +63,7 @@ export default function RootLayout({
                 ]}
               />
             }
-            toolsOpen={true}
-            tools={
-              <HelpPanel header={<h2>Overview</h2>}>Help content</HelpPanel>
-            }
+            toolsOpen={false}
             content={children}
           />
         </I18nProvider>
