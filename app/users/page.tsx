@@ -9,13 +9,8 @@ Amplify.configure(outputs);
 
 export default function Page() {
   return (
-    <Authenticator>
-      {({ signOut, user }) => (
       <main>
-        <h1>Another page</h1>
-        <button onClick={signOut}>Sign out</button>
+        <h1>Another page - to make it private I have to wrap it in an Authenticator + the internationalization</h1>
       </main>
-      )}
-    </Authenticator>
-  );
+      )
 }
