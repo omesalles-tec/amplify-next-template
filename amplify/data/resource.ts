@@ -1,8 +1,4 @@
-import {
-  type ClientSchema,
-  a,
-  defineData,
-} from "@aws-amplify/backend";
+import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 import { postConfirmation } from "../auth/post-confirmation/resource";
 
 /*== STEP 1 ===============================================================
@@ -11,24 +7,23 @@ adding a new "isDone" field as a boolean. The authorization rule below
 specifies that any user authenticated via an API key can "create", "read",
 "update", and "delete" any "User" records.
 =========================================================================*/
-const schema = a.schema({
-  Household: a
-    .model({
-      id: a.id().required(),
-      householdName: a.string(),
-      members: a.hasMany("User", "householdID"),
-    })
-    .authorization((allow) => [allow.publicApiKey()]),
+const schema = a
+  .schema({
     User: a
-    .model({
-      householdID: a.belongsTo("Household", "id"),
-      email: a.string(),
-    })
-    .authorization((allow) => [
-      allow.ownerDefinedIn("householdID"),
-    ]),
-})
-.authorization((allow) => [allow.resource(postConfirmation)]);
+      .model({
+        email: a.string().required(),
+        householdID: a.id(),
+        household: a.belongsTo("Household", "id"),
+      })
+      .authorization((allow) => [allow.ownerDefinedIn("householdID")]),
+    Household: a.model({
+        id: a.id().required(),
+        householdName: a.string(),
+        members: a.hasMany("User", "householdID"),
+      })
+      .authorization((allow) => [allow.publicApiKey()]),
+  })
+  .authorization((allow) => [allow.resource(postConfirmation)]);
 
 export type Schema = ClientSchema<typeof schema>;
 
