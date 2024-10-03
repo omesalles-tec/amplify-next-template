@@ -23,6 +23,7 @@ export type User = {
   email: string,
   household?: Household | null,
   householdID?: string | null,
+  householdName?: string | null,
   id: string,
   updatedAt: string,
 };
@@ -144,6 +145,7 @@ export type CreateUserInput = {
   email: string,
   householdID?: string | null,
   id?: string | null,
+  householdName?: string | null,
 };
 
 export type DeleteHouseholdInput = {

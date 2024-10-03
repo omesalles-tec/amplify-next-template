@@ -43,6 +43,7 @@ export const createUser = /* GraphQL */ `mutation CreateUser(
       __typename
     }
     householdID
+    householdName
     id
     updatedAt
     __typename

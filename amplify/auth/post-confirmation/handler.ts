@@ -86,6 +86,7 @@ export const handler: PostConfirmationTriggerHandler = async (event) => {
       input: {
         email: event.request.userAttributes.email,
         householdID: householdID,
+        householdName: householdName,
       },
     },
   });

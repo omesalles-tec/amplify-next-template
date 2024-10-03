@@ -13,9 +13,12 @@ const schema = a
       .model({
         email: a.string().required(),
         householdID: a.id(),
+        householdName: a.string(),
         household: a.belongsTo("Household", "householdID"),
       })
-      .authorization((allow) => [allow.ownerDefinedIn("householdID")]),
+      .authorization((allow) => [allow.ownerDefinedIn("householdID"),
+        allow.publicApiKey()
+      ]),
     Household: a.model({
         id: a.id().required(),
         householdName: a.string(),

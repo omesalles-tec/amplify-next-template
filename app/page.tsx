@@ -12,6 +12,7 @@ import { translations } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import "./../app/app.css";
 import "@cloudscape-design/global-styles/index.css";
+import { fetchUserAttributes } from 'aws-amplify/auth';
 
 Amplify.configure(outputs);
 
@@ -29,11 +30,45 @@ I18n.putVocabularies({
 
 export default function App() {
   const [Users, setUsers] = useState<Array<Schema["User"]["type"]>>([]);
+  const [loggedInUserHouseholdId, setLoggedInUserHouseholdId] = useState<string | null>(null);
 
-  function listUsers() {
-    client.models.User.observeQuery().subscribe({
-      next: (data) => setUsers([...data.items]),
-    });
+  async function listUsers() {
+    try {
+      // Get the logged-in user's information
+      const currentUser = await fetchUserAttributes();
+      const householdName = currentUser['custom:householdName'];
+      /* use householdName to get householdID from Household table */
+      const { data } = await client.models.Household.list({
+        filter: {
+          householdName: {
+            eq: householdName
+          }
+        }
+      });
+      const householdID = data[0].id;
+
+      if (householdID) {
+        setLoggedInUserHouseholdId(householdID);
+
+        const allUsers = await client.models.User.list();
+console.log('All users:', allUsers);
+
+        // Query users with the same household ID
+        const { data } = await client.models.User.list({
+          filter: {
+            householdID: {
+              eq: householdID
+            }
+          }
+        });
+        console.log(data);
+        setUsers(data);
+      } else {
+        console.error('Household ID not found for the logged-in user');
+      }
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
   }
 
   useEffect(() => {
