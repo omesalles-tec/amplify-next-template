@@ -242,14 +242,14 @@ export type GetUserQuery = {
   } | null,
 };
 
-export type ListTodosQueryVariables = {
+export type ListUserQueryVariables = {
   filter?: ModelTodoFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListTodosQuery = {
-  listTodos?:  {
+export type ListUserQuery = {
+  listUser?:  {
     __typename: "ModelTodoConnection",
     items:  Array< {
       __typename: "Todo",
@@ -380,11 +380,11 @@ export type UpdateUserMutation = {
   } | null,
 };
 
-export type OnCreateTodoSubscriptionVariables = {
+export type OnCreateUserubscriptionVariables = {
   filter?: ModelSubscriptionTodoFilterInput | null,
 };
 
-export type OnCreateTodoSubscription = {
+export type OnCreateUserubscription = {
   onCreateTodo?:  {
     __typename: "Todo",
     content?: string | null,
@@ -411,11 +411,11 @@ export type OnCreateUserSubscription = {
   } | null,
 };
 
-export type OnDeleteTodoSubscriptionVariables = {
+export type OnDeleteUserubscriptionVariables = {
   filter?: ModelSubscriptionTodoFilterInput | null,
 };
 
-export type OnDeleteTodoSubscription = {
+export type OnDeleteUserubscription = {
   onDeleteTodo?:  {
     __typename: "Todo",
     content?: string | null,
@@ -442,11 +442,11 @@ export type OnDeleteUserSubscription = {
   } | null,
 };
 
-export type OnUpdateTodoSubscriptionVariables = {
+export type OnUpdateUserubscriptionVariables = {
   filter?: ModelSubscriptionTodoFilterInput | null,
 };
 
-export type OnUpdateTodoSubscription = {
+export type OnUpdateUserubscription = {
   onUpdateTodo?:  {
     __typename: "Todo",
     content?: string | null,

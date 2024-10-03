@@ -33,12 +33,12 @@ export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
   APITypes.GetUserQueryVariables,
   APITypes.GetUserQuery
 >;
-export const listTodos = /* GraphQL */ `query ListTodos(
+export const listUser = /* GraphQL */ `query ListUser(
   $filter: ModelTodoFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listUser(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       content
       createdAt
@@ -50,7 +50,7 @@ export const listTodos = /* GraphQL */ `query ListTodos(
     __typename
   }
 }
-` as GeneratedQuery<APITypes.ListTodosQueryVariables, APITypes.ListTodosQuery>;
+` as GeneratedQuery<APITypes.ListUserQueryVariables, APITypes.ListUserQuery>;
 export const listUsers = /* GraphQL */ `query ListUsers(
   $filter: ModelUserFilterInput
   $limit: Int

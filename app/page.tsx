@@ -32,16 +32,16 @@ I18n.putVocabularies({
 });
 
 export default function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [User, setUser] = useState<Array<Schema["Todo"]["type"]>>([]);
 
-  function listTodos() {
+  function listUser() {
     client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
+      next: (data) => setUser([...data.items]),
     });
   }
 
   useEffect(() => {
-    listTodos();
+    listUser();
   }, []);
 
   function createTodo() {
@@ -53,10 +53,10 @@ export default function App() {
   return (
     <I18nProvider locale={LOCALE} messages={[messages]}>
       <main>
-        <h1>My todos</h1>
+        <h1>My User</h1>
         <button onClick={createTodo}>+ new</button>
         <ul>
-          {todos.map((todo) => (
+          {User.map((todo) => (
             <li key={todo.id}>{todo.content}</li>
           ))}
         </ul>

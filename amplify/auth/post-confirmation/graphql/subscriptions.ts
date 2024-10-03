@@ -18,8 +18,8 @@ export const onCreateTodo = /* GraphQL */ `subscription OnCreateTodo($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnCreateTodoSubscriptionVariables,
-  APITypes.OnCreateTodoSubscription
+  APITypes.OnCreateUserubscriptionVariables,
+  APITypes.OnCreateUserubscription
 >;
 export const onCreateUser = /* GraphQL */ `subscription OnCreateUser(
   $filter: ModelSubscriptionUserFilterInput
@@ -49,8 +49,8 @@ export const onDeleteTodo = /* GraphQL */ `subscription OnDeleteTodo($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnDeleteTodoSubscriptionVariables,
-  APITypes.OnDeleteTodoSubscription
+  APITypes.OnDeleteUserubscriptionVariables,
+  APITypes.OnDeleteUserubscription
 >;
 export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser(
   $filter: ModelSubscriptionUserFilterInput
@@ -80,8 +80,8 @@ export const onUpdateTodo = /* GraphQL */ `subscription OnUpdateTodo($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnUpdateTodoSubscriptionVariables,
-  APITypes.OnUpdateTodoSubscription
+  APITypes.OnUpdateUserubscriptionVariables,
+  APITypes.OnUpdateUserubscription
 >;
 export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser(
   $filter: ModelSubscriptionUserFilterInput
