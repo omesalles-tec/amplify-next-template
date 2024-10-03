@@ -14,7 +14,7 @@ const schema = a
         email: a.string().required(),
         householdID: a.id(),
         householdName: a.string(),
-        household: a.belongsTo("Household", "householdID"),
+        //household: a.belongsTo("Household", "householdID"),
       })
       .authorization((allow) => [
         allow.owner(),
@@ -24,7 +24,7 @@ const schema = a
     Household: a.model({
         /*id: a.id().required(),*/
         householdName: a.string().required(),
-        members: a.hasMany("User", "householdID"),
+        //members: a.hasMany("User", "householdID"),
       })
       .authorization((allow) => [allow.publicApiKey()]),
   })

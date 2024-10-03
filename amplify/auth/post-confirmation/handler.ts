@@ -82,7 +82,7 @@ export const handler: PostConfirmationTriggerHandler = async (event) => {
     }
     console.log("Household ID:", householdID);
     // Create a new user with the householdID
-    /*await client.graphql({
+    await client.graphql({
       query: createUser,
       variables: {
         input: {
@@ -91,14 +91,8 @@ export const handler: PostConfirmationTriggerHandler = async (event) => {
           householdName: householdName,
         },
       },
-    });*/
-    const { data: user } = await client.models.User.create({
-      email: event.request.userAttributes.email,
-      householdID: householdID,
-      householdName: householdName,
     });
-    console.log("User created:", user);
-    
+
   } catch (error) {
     console.error("Error creating user:", error);
     throw error;
