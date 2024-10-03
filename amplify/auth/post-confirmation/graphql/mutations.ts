@@ -8,11 +8,11 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
-export const createTodo = /* GraphQL */ `mutation CreateTodo(
-  $condition: ModelTodoConditionInput
-  $input: CreateTodoInput!
+export const createUser = /* GraphQL */ `mutation CreateUser(
+  $condition: ModelUserConditionInput
+  $input: CreateUserInput!
 ) {
-  createTodo(condition: $condition, input: $input) {
+  createUser(condition: $condition, input: $input) {
     content
     createdAt
     id
@@ -21,8 +21,8 @@ export const createTodo = /* GraphQL */ `mutation CreateTodo(
   }
 }
 ` as GeneratedMutation<
-  APITypes.CreateTodoMutationVariables,
-  APITypes.CreateTodoMutation
+  APITypes.CreateUserMutationVariables,
+  APITypes.CreateUserMutation
 >;
 export const createUser = /* GraphQL */ `mutation CreateUser(
   $condition: ModelUserConditionInput
@@ -42,11 +42,11 @@ export const createUser = /* GraphQL */ `mutation CreateUser(
   APITypes.CreateUserMutationVariables,
   APITypes.CreateUserMutation
 >;
-export const deleteTodo = /* GraphQL */ `mutation DeleteTodo(
-  $condition: ModelTodoConditionInput
-  $input: DeleteTodoInput!
+export const deleteUser = /* GraphQL */ `mutation DeleteUser(
+  $condition: ModelUserConditionInput
+  $input: DeleteUserInput!
 ) {
-  deleteTodo(condition: $condition, input: $input) {
+  deleteUser(condition: $condition, input: $input) {
     content
     createdAt
     id
@@ -55,8 +55,8 @@ export const deleteTodo = /* GraphQL */ `mutation DeleteTodo(
   }
 }
 ` as GeneratedMutation<
-  APITypes.DeleteTodoMutationVariables,
-  APITypes.DeleteTodoMutation
+  APITypes.DeleteUserMutationVariables,
+  APITypes.DeleteUserMutation
 >;
 export const deleteUser = /* GraphQL */ `mutation DeleteUser(
   $condition: ModelUserConditionInput
@@ -76,11 +76,11 @@ export const deleteUser = /* GraphQL */ `mutation DeleteUser(
   APITypes.DeleteUserMutationVariables,
   APITypes.DeleteUserMutation
 >;
-export const updateTodo = /* GraphQL */ `mutation UpdateTodo(
-  $condition: ModelTodoConditionInput
-  $input: UpdateTodoInput!
+export const updateUser = /* GraphQL */ `mutation UpdateUser(
+  $condition: ModelUserConditionInput
+  $input: UpdateUserInput!
 ) {
-  updateTodo(condition: $condition, input: $input) {
+  updateUser(condition: $condition, input: $input) {
     content
     createdAt
     id
@@ -89,8 +89,8 @@ export const updateTodo = /* GraphQL */ `mutation UpdateTodo(
   }
 }
 ` as GeneratedMutation<
-  APITypes.UpdateTodoMutationVariables,
-  APITypes.UpdateTodoMutation
+  APITypes.UpdateUserMutationVariables,
+  APITypes.UpdateUserMutation
 >;
 export const updateUser = /* GraphQL */ `mutation UpdateUser(
   $condition: ModelUserConditionInput

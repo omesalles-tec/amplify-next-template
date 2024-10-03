@@ -6,10 +6,10 @@ import {
 import { postConfirmation } from "../auth/post-confirmation/resource";
 
 /*== STEP 1 ===============================================================
-The section below creates a Todo database table with a "content" field. Try
+The section below creates a User database table with a "content" field. Try
 adding a new "isDone" field as a boolean. The authorization rule below
 specifies that any user authenticated via an API key can "create", "read",
-"update", and "delete" any "Todo" records.
+"update", and "delete" any "User" records.
 =========================================================================*/
 const schema = a.schema({
   Household: a
@@ -66,6 +66,6 @@ Fetch records from the database and use them in your frontend component.
 
 /* For example, in a React component, you can use this snippet in your
   function's RETURN statement */
-// const { data: User } = await client.models.Todo.list()
+// const { data: User } = await client.models.User.list()
 
-// return <ul>{User.map(todo => <li key={todo.id}>{todo.content}</li>)}</ul>
+// return <ul>{User.map(User => <li key={User.id}>{User.content}</li>)}</ul>

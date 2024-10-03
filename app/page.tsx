@@ -23,19 +23,19 @@ I18n.setLanguage("es");
 I18n.putVocabularies({
   es: {
     "App successfully hosted":
-      "La App sea ha instalado exitosamente. Intenta crear un nuevo todo",
+      "La App sea ha instalado exitosamente. Intenta crear un nuevo User",
     "Review next steps of this tutorial":
       "Revisa los siguientes pasos de este tutorial",
-    "Todo content": "El contenido del todo",
+    "User content": "El contenido del User",
     new: "nuevo",
   },
 });
 
 export default function App() {
-  const [User, setUser] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [User, setUser] = useState<Array<Schema["User"]["type"]>>([]);
 
   function listUser() {
-    client.models.Todo.observeQuery().subscribe({
+    client.models.User.observeQuery().subscribe({
       next: (data) => setUser([...data.items]),
     });
   }
@@ -44,9 +44,9 @@ export default function App() {
     listUser();
   }, []);
 
-  function createTodo() {
-    client.models.Todo.create({
-      content: window.prompt("Todo content"),
+  function createUser() {
+    client.models.User.create({
+      content: window.prompt("User content"),
     });
   }
 
@@ -54,14 +54,14 @@ export default function App() {
     <I18nProvider locale={LOCALE} messages={[messages]}>
       <main>
         <h1>My User</h1>
-        <button onClick={createTodo}>+ new</button>
+        <button onClick={createUser}>+ new</button>
         <ul>
-          {User.map((todo) => (
-            <li key={todo.id}>{todo.content}</li>
+          {User.map((User) => (
+            <li key={User.id}>{User.content}</li>
           ))}
         </ul>
         <div>
-          🥳 App successfully hosted. Try creating a new todo.
+          🥳 App successfully hosted. Try creating a new User.
           <br />
           <a href="https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/">
             Review next steps of this tutorial.

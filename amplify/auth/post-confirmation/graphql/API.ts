@@ -2,8 +2,8 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type Todo = {
-  __typename: "Todo",
+export type User = {
+  __typename: "User",
   content?: string | null,
   createdAt: string,
   id: string,
@@ -20,13 +20,13 @@ export type User = {
   updatedAt: string,
 };
 
-export type ModelTodoFilterInput = {
-  and?: Array< ModelTodoFilterInput | null > | null,
+export type ModelUserFilterInput = {
+  and?: Array< ModelUserFilterInput | null > | null,
   content?: ModelStringInput | null,
   createdAt?: ModelStringInput | null,
   id?: ModelIDInput | null,
-  not?: ModelTodoFilterInput | null,
-  or?: Array< ModelTodoFilterInput | null > | null,
+  not?: ModelUserFilterInput | null,
+  or?: Array< ModelUserFilterInput | null > | null,
   updatedAt?: ModelStringInput | null,
 };
 
@@ -86,9 +86,9 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type ModelTodoConnection = {
-  __typename: "ModelTodoConnection",
-  items:  Array<Todo | null >,
+export type ModelUserConnection = {
+  __typename: "ModelUserConnection",
+  items:  Array<User | null >,
   nextToken?: string | null,
 };
 
@@ -110,16 +110,16 @@ export type ModelUserConnection = {
   nextToken?: string | null,
 };
 
-export type ModelTodoConditionInput = {
-  and?: Array< ModelTodoConditionInput | null > | null,
+export type ModelUserConditionInput = {
+  and?: Array< ModelUserConditionInput | null > | null,
   content?: ModelStringInput | null,
   createdAt?: ModelStringInput | null,
-  not?: ModelTodoConditionInput | null,
-  or?: Array< ModelTodoConditionInput | null > | null,
+  not?: ModelUserConditionInput | null,
+  or?: Array< ModelUserConditionInput | null > | null,
   updatedAt?: ModelStringInput | null,
 };
 
-export type CreateTodoInput = {
+export type CreateUserInput = {
   content?: string | null,
   id?: string | null,
 };
@@ -142,7 +142,7 @@ export type CreateUserInput = {
   userName?: string | null,
 };
 
-export type DeleteTodoInput = {
+export type DeleteUserInput = {
   id: string,
 };
 
@@ -150,7 +150,7 @@ export type DeleteUserInput = {
   id: string,
 };
 
-export type UpdateTodoInput = {
+export type UpdateUserInput = {
   content?: string | null,
   id: string,
 };
@@ -162,12 +162,12 @@ export type UpdateUserInput = {
   userName?: string | null,
 };
 
-export type ModelSubscriptionTodoFilterInput = {
-  and?: Array< ModelSubscriptionTodoFilterInput | null > | null,
+export type ModelSubscriptionUserFilterInput = {
+  and?: Array< ModelSubscriptionUserFilterInput | null > | null,
   content?: ModelSubscriptionStringInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   id?: ModelSubscriptionIDInput | null,
-  or?: Array< ModelSubscriptionTodoFilterInput | null > | null,
+  or?: Array< ModelSubscriptionUserFilterInput | null > | null,
   updatedAt?: ModelSubscriptionStringInput | null,
 };
 
@@ -212,13 +212,13 @@ export type ModelSubscriptionUserFilterInput = {
   updatedAt?: ModelSubscriptionStringInput | null,
 };
 
-export type GetTodoQueryVariables = {
+export type GetUserQueryVariables = {
   id: string,
 };
 
-export type GetTodoQuery = {
-  getTodo?:  {
-    __typename: "Todo",
+export type GetUserQuery = {
+  getUser?:  {
+    __typename: "User",
     content?: string | null,
     createdAt: string,
     id: string,
@@ -243,16 +243,16 @@ export type GetUserQuery = {
 };
 
 export type ListUserQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
+  filter?: ModelUserFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
 export type ListUserQuery = {
   listUser?:  {
-    __typename: "ModelTodoConnection",
+    __typename: "ModelUserConnection",
     items:  Array< {
-      __typename: "Todo",
+      __typename: "User",
       content?: string | null,
       createdAt: string,
       id: string,
@@ -284,14 +284,14 @@ export type ListUsersQuery = {
   } | null,
 };
 
-export type CreateTodoMutationVariables = {
-  condition?: ModelTodoConditionInput | null,
-  input: CreateTodoInput,
+export type CreateUserMutationVariables = {
+  condition?: ModelUserConditionInput | null,
+  input: CreateUserInput,
 };
 
-export type CreateTodoMutation = {
-  createTodo?:  {
-    __typename: "Todo",
+export type CreateUserMutation = {
+  createUser?:  {
+    __typename: "User",
     content?: string | null,
     createdAt: string,
     id: string,
@@ -316,14 +316,14 @@ export type CreateUserMutation = {
   } | null,
 };
 
-export type DeleteTodoMutationVariables = {
-  condition?: ModelTodoConditionInput | null,
-  input: DeleteTodoInput,
+export type DeleteUserMutationVariables = {
+  condition?: ModelUserConditionInput | null,
+  input: DeleteUserInput,
 };
 
-export type DeleteTodoMutation = {
-  deleteTodo?:  {
-    __typename: "Todo",
+export type DeleteUserMutation = {
+  deleteUser?:  {
+    __typename: "User",
     content?: string | null,
     createdAt: string,
     id: string,
@@ -348,14 +348,14 @@ export type DeleteUserMutation = {
   } | null,
 };
 
-export type UpdateTodoMutationVariables = {
-  condition?: ModelTodoConditionInput | null,
-  input: UpdateTodoInput,
+export type UpdateUserMutationVariables = {
+  condition?: ModelUserConditionInput | null,
+  input: UpdateUserInput,
 };
 
-export type UpdateTodoMutation = {
-  updateTodo?:  {
-    __typename: "Todo",
+export type UpdateUserMutation = {
+  updateUser?:  {
+    __typename: "User",
     content?: string | null,
     createdAt: string,
     id: string,
@@ -381,12 +381,12 @@ export type UpdateUserMutation = {
 };
 
 export type OnCreateUserubscriptionVariables = {
-  filter?: ModelSubscriptionTodoFilterInput | null,
+  filter?: ModelSubscriptionUserFilterInput | null,
 };
 
 export type OnCreateUserubscription = {
-  onCreateTodo?:  {
-    __typename: "Todo",
+  onCreateUser?:  {
+    __typename: "User",
     content?: string | null,
     createdAt: string,
     id: string,
@@ -412,12 +412,12 @@ export type OnCreateUserSubscription = {
 };
 
 export type OnDeleteUserubscriptionVariables = {
-  filter?: ModelSubscriptionTodoFilterInput | null,
+  filter?: ModelSubscriptionUserFilterInput | null,
 };
 
 export type OnDeleteUserubscription = {
-  onDeleteTodo?:  {
-    __typename: "Todo",
+  onDeleteUser?:  {
+    __typename: "User",
     content?: string | null,
     createdAt: string,
     id: string,
@@ -443,12 +443,12 @@ export type OnDeleteUserSubscription = {
 };
 
 export type OnUpdateUserubscriptionVariables = {
-  filter?: ModelSubscriptionTodoFilterInput | null,
+  filter?: ModelSubscriptionUserFilterInput | null,
 };
 
 export type OnUpdateUserubscription = {
-  onUpdateTodo?:  {
-    __typename: "Todo",
+  onUpdateUser?:  {
+    __typename: "User",
     content?: string | null,
     createdAt: string,
     id: string,

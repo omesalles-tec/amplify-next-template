@@ -8,8 +8,8 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
-export const getTodo = /* GraphQL */ `query GetTodo($id: ID!) {
-  getTodo(id: $id) {
+export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
+  getUser(id: $id) {
     content
     createdAt
     id
@@ -17,7 +17,7 @@ export const getTodo = /* GraphQL */ `query GetTodo($id: ID!) {
     __typename
   }
 }
-` as GeneratedQuery<APITypes.GetTodoQueryVariables, APITypes.GetTodoQuery>;
+` as GeneratedQuery<APITypes.GetUserQueryVariables, APITypes.GetUserQuery>;
 export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
   getUser(id: $id) {
     createdAt
@@ -34,7 +34,7 @@ export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
   APITypes.GetUserQuery
 >;
 export const listUser = /* GraphQL */ `query ListUser(
-  $filter: ModelTodoFilterInput
+  $filter: ModelUserFilterInput
   $limit: Int
   $nextToken: String
 ) {
