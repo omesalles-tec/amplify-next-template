@@ -39,6 +39,7 @@ const client = generateClient<Schema>({
 });
 
 export const handler: PostConfirmationTriggerHandler = async (event) => {
+  try {
   const {
     userName,
     request: { userAttributes },
@@ -88,8 +89,12 @@ export const handler: PostConfirmationTriggerHandler = async (event) => {
         householdID: householdID,
         householdName: householdName,
       },
-    },
-  });
+      },
+    });
+  } catch (error) {
+    console.error('Error creating user:', error);
+    throw error;
+  }
 
   return event;
 };

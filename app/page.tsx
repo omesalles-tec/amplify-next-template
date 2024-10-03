@@ -81,7 +81,7 @@ console.log('All users:', allUsers);
         <h1>Household members</h1>
         <ul>
           {Users.map((User) => (
-            <li key={User.id}>{User.email}</li>
+            <li key={User.id}>{User.householdName} - {User.email}</li>
           ))}
         </ul>
       </main>
