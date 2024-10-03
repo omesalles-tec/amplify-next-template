@@ -40,6 +40,7 @@ export const onCreateUser = /* GraphQL */ `subscription OnCreateUser(
       __typename
     }
     householdID
+    householdName
     id
     updatedAt
     __typename
@@ -81,6 +82,7 @@ export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser(
       __typename
     }
     householdID
+    householdName
     id
     updatedAt
     __typename
@@ -122,6 +124,7 @@ export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser(
       __typename
     }
     householdID
+    householdName
     id
     updatedAt
     __typename

@@ -37,6 +37,7 @@ export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
       __typename
     }
     householdID
+    householdName
     id
     updatedAt
     __typename
@@ -82,6 +83,7 @@ export const listUsers = /* GraphQL */ `query ListUsers(
       createdAt
       email
       householdID
+      householdName
       id
       updatedAt
       __typename
