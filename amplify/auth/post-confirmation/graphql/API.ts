@@ -7,21 +7,13 @@ export type Household = {
   createdAt: string,
   householdName: string,
   id: string,
-  members?: ModelUserConnection | null,
   updatedAt: string,
-};
-
-export type ModelUserConnection = {
-  __typename: "ModelUserConnection",
-  items:  Array<User | null >,
-  nextToken?: string | null,
 };
 
 export type User = {
   __typename: "User",
   createdAt: string,
   email: string,
-  household?: Household | null,
   householdID?: string | null,
   householdName?: string | null,
   id: string,
@@ -112,6 +104,12 @@ export type ModelUserFilterInput = {
   or?: Array< ModelUserFilterInput | null > | null,
   owner?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
+};
+
+export type ModelUserConnection = {
+  __typename: "ModelUserConnection",
+  items:  Array<User | null >,
+  nextToken?: string | null,
 };
 
 export type ModelHouseholdConditionInput = {
@@ -228,10 +226,6 @@ export type GetHouseholdQuery = {
     createdAt: string,
     householdName: string,
     id: string,
-    members?:  {
-      __typename: "ModelUserConnection",
-      nextToken?: string | null,
-    } | null,
     updatedAt: string,
   } | null,
 };
@@ -245,13 +239,6 @@ export type GetUserQuery = {
     __typename: "User",
     createdAt: string,
     email: string,
-    household?:  {
-      __typename: "Household",
-      createdAt: string,
-      householdName: string,
-      id: string,
-      updatedAt: string,
-    } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
@@ -314,10 +301,6 @@ export type CreateHouseholdMutation = {
     createdAt: string,
     householdName: string,
     id: string,
-    members?:  {
-      __typename: "ModelUserConnection",
-      nextToken?: string | null,
-    } | null,
     updatedAt: string,
   } | null,
 };
@@ -332,13 +315,6 @@ export type CreateUserMutation = {
     __typename: "User",
     createdAt: string,
     email: string,
-    household?:  {
-      __typename: "Household",
-      createdAt: string,
-      householdName: string,
-      id: string,
-      updatedAt: string,
-    } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
@@ -358,10 +334,6 @@ export type DeleteHouseholdMutation = {
     createdAt: string,
     householdName: string,
     id: string,
-    members?:  {
-      __typename: "ModelUserConnection",
-      nextToken?: string | null,
-    } | null,
     updatedAt: string,
   } | null,
 };
@@ -376,13 +348,6 @@ export type DeleteUserMutation = {
     __typename: "User",
     createdAt: string,
     email: string,
-    household?:  {
-      __typename: "Household",
-      createdAt: string,
-      householdName: string,
-      id: string,
-      updatedAt: string,
-    } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
@@ -402,10 +367,6 @@ export type UpdateHouseholdMutation = {
     createdAt: string,
     householdName: string,
     id: string,
-    members?:  {
-      __typename: "ModelUserConnection",
-      nextToken?: string | null,
-    } | null,
     updatedAt: string,
   } | null,
 };
@@ -420,13 +381,6 @@ export type UpdateUserMutation = {
     __typename: "User",
     createdAt: string,
     email: string,
-    household?:  {
-      __typename: "Household",
-      createdAt: string,
-      householdName: string,
-      id: string,
-      updatedAt: string,
-    } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
@@ -445,10 +399,6 @@ export type OnCreateHouseholdSubscription = {
     createdAt: string,
     householdName: string,
     id: string,
-    members?:  {
-      __typename: "ModelUserConnection",
-      nextToken?: string | null,
-    } | null,
     updatedAt: string,
   } | null,
 };
@@ -464,13 +414,6 @@ export type OnCreateUserSubscription = {
     __typename: "User",
     createdAt: string,
     email: string,
-    household?:  {
-      __typename: "Household",
-      createdAt: string,
-      householdName: string,
-      id: string,
-      updatedAt: string,
-    } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
@@ -489,10 +432,6 @@ export type OnDeleteHouseholdSubscription = {
     createdAt: string,
     householdName: string,
     id: string,
-    members?:  {
-      __typename: "ModelUserConnection",
-      nextToken?: string | null,
-    } | null,
     updatedAt: string,
   } | null,
 };
@@ -508,13 +447,6 @@ export type OnDeleteUserSubscription = {
     __typename: "User",
     createdAt: string,
     email: string,
-    household?:  {
-      __typename: "Household",
-      createdAt: string,
-      householdName: string,
-      id: string,
-      updatedAt: string,
-    } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
@@ -533,10 +465,6 @@ export type OnUpdateHouseholdSubscription = {
     createdAt: string,
     householdName: string,
     id: string,
-    members?:  {
-      __typename: "ModelUserConnection",
-      nextToken?: string | null,
-    } | null,
     updatedAt: string,
   } | null,
 };
@@ -552,13 +480,6 @@ export type OnUpdateUserSubscription = {
     __typename: "User",
     createdAt: string,
     email: string,
-    household?:  {
-      __typename: "Household",
-      createdAt: string,
-      householdName: string,
-      id: string,
-      updatedAt: string,
-    } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,

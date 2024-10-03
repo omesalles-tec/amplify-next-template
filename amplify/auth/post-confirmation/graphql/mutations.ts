@@ -16,10 +16,6 @@ export const createHousehold = /* GraphQL */ `mutation CreateHousehold(
     createdAt
     householdName
     id
-    members {
-      nextToken
-      __typename
-    }
     updatedAt
     __typename
   }
@@ -35,13 +31,6 @@ export const createUser = /* GraphQL */ `mutation CreateUser(
   createUser(condition: $condition, input: $input) {
     createdAt
     email
-    household {
-      createdAt
-      householdName
-      id
-      updatedAt
-      __typename
-    }
     householdID
     householdName
     id
@@ -62,10 +51,6 @@ export const deleteHousehold = /* GraphQL */ `mutation DeleteHousehold(
     createdAt
     householdName
     id
-    members {
-      nextToken
-      __typename
-    }
     updatedAt
     __typename
   }
@@ -81,13 +66,6 @@ export const deleteUser = /* GraphQL */ `mutation DeleteUser(
   deleteUser(condition: $condition, input: $input) {
     createdAt
     email
-    household {
-      createdAt
-      householdName
-      id
-      updatedAt
-      __typename
-    }
     householdID
     householdName
     id
@@ -108,10 +86,6 @@ export const updateHousehold = /* GraphQL */ `mutation UpdateHousehold(
     createdAt
     householdName
     id
-    members {
-      nextToken
-      __typename
-    }
     updatedAt
     __typename
   }
@@ -127,13 +101,6 @@ export const updateUser = /* GraphQL */ `mutation UpdateUser(
   updateUser(condition: $condition, input: $input) {
     createdAt
     email
-    household {
-      createdAt
-      householdName
-      id
-      updatedAt
-      __typename
-    }
     householdID
     householdName
     id

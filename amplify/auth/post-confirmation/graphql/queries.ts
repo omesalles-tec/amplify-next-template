@@ -13,10 +13,6 @@ export const getHousehold = /* GraphQL */ `query GetHousehold($id: ID!) {
     createdAt
     householdName
     id
-    members {
-      nextToken
-      __typename
-    }
     updatedAt
     __typename
   }
@@ -29,13 +25,6 @@ export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
   getUser(id: $id) {
     createdAt
     email
-    household {
-      createdAt
-      householdName
-      id
-      updatedAt
-      __typename
-    }
     householdID
     householdName
     id
