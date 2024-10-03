@@ -39,6 +39,7 @@ export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
     householdID
     householdName
     id
+    owner
     updatedAt
     __typename
   }
@@ -46,18 +47,10 @@ export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
 ` as GeneratedQuery<APITypes.GetUserQueryVariables, APITypes.GetUserQuery>;
 export const listHouseholds = /* GraphQL */ `query ListHouseholds(
   $filter: ModelHouseholdFilterInput
-  $id: ID
   $limit: Int
   $nextToken: String
-  $sortDirection: ModelSortDirection
 ) {
-  listHouseholds(
-    filter: $filter
-    id: $id
-    limit: $limit
-    nextToken: $nextToken
-    sortDirection: $sortDirection
-  ) {
+  listHouseholds(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       createdAt
       householdName
@@ -85,6 +78,7 @@ export const listUsers = /* GraphQL */ `query ListUsers(
       householdID
       householdName
       id
+      owner
       updatedAt
       __typename
     }

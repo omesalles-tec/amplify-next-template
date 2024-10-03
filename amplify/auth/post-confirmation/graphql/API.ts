@@ -5,7 +5,7 @@
 export type Household = {
   __typename: "Household",
   createdAt: string,
-  householdName?: string | null,
+  householdName: string,
   id: string,
   members?: ModelUserConnection | null,
   updatedAt: string,
@@ -25,6 +25,7 @@ export type User = {
   householdID?: string | null,
   householdName?: string | null,
   id: string,
+  owner?: string | null,
   updatedAt: string,
 };
 
@@ -94,12 +95,6 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export enum ModelSortDirection {
-  ASC = "ASC",
-  DESC = "DESC",
-}
-
-
 export type ModelHouseholdConnection = {
   __typename: "ModelHouseholdConnection",
   items:  Array<Household | null >,
@@ -115,6 +110,7 @@ export type ModelUserFilterInput = {
   id?: ModelIDInput | null,
   not?: ModelUserFilterInput | null,
   or?: Array< ModelUserFilterInput | null > | null,
+  owner?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
 };
 
@@ -128,7 +124,7 @@ export type ModelHouseholdConditionInput = {
 };
 
 export type CreateHouseholdInput = {
-  householdName?: string | null,
+  householdName: string,
   id?: string | null,
 };
 
@@ -140,6 +136,7 @@ export type ModelUserConditionInput = {
   householdName?: ModelStringInput | null,
   not?: ModelUserConditionInput | null,
   or?: Array< ModelUserConditionInput | null > | null,
+  owner?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
 };
 
@@ -217,6 +214,7 @@ export type ModelSubscriptionUserFilterInput = {
   householdName?: ModelSubscriptionStringInput | null,
   id?: ModelSubscriptionIDInput | null,
   or?: Array< ModelSubscriptionUserFilterInput | null > | null,
+  owner?: ModelStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
 };
 
@@ -228,7 +226,7 @@ export type GetHouseholdQuery = {
   getHousehold?:  {
     __typename: "Household",
     createdAt: string,
-    householdName?: string | null,
+    householdName: string,
     id: string,
     members?:  {
       __typename: "ModelUserConnection",
@@ -250,23 +248,22 @@ export type GetUserQuery = {
     household?:  {
       __typename: "Household",
       createdAt: string,
-      householdName?: string | null,
+      householdName: string,
       id: string,
       updatedAt: string,
     } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
+    owner?: string | null,
     updatedAt: string,
   } | null,
 };
 
 export type ListHouseholdsQueryVariables = {
   filter?: ModelHouseholdFilterInput | null,
-  id?: string | null,
   limit?: number | null,
   nextToken?: string | null,
-  sortDirection?: ModelSortDirection | null,
 };
 
 export type ListHouseholdsQuery = {
@@ -275,7 +272,7 @@ export type ListHouseholdsQuery = {
     items:  Array< {
       __typename: "Household",
       createdAt: string,
-      householdName?: string | null,
+      householdName: string,
       id: string,
       updatedAt: string,
     } | null >,
@@ -299,6 +296,7 @@ export type ListUsersQuery = {
       householdID?: string | null,
       householdName?: string | null,
       id: string,
+      owner?: string | null,
       updatedAt: string,
     } | null >,
     nextToken?: string | null,
@@ -314,7 +312,7 @@ export type CreateHouseholdMutation = {
   createHousehold?:  {
     __typename: "Household",
     createdAt: string,
-    householdName?: string | null,
+    householdName: string,
     id: string,
     members?:  {
       __typename: "ModelUserConnection",
@@ -337,13 +335,14 @@ export type CreateUserMutation = {
     household?:  {
       __typename: "Household",
       createdAt: string,
-      householdName?: string | null,
+      householdName: string,
       id: string,
       updatedAt: string,
     } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
+    owner?: string | null,
     updatedAt: string,
   } | null,
 };
@@ -357,7 +356,7 @@ export type DeleteHouseholdMutation = {
   deleteHousehold?:  {
     __typename: "Household",
     createdAt: string,
-    householdName?: string | null,
+    householdName: string,
     id: string,
     members?:  {
       __typename: "ModelUserConnection",
@@ -380,13 +379,14 @@ export type DeleteUserMutation = {
     household?:  {
       __typename: "Household",
       createdAt: string,
-      householdName?: string | null,
+      householdName: string,
       id: string,
       updatedAt: string,
     } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
+    owner?: string | null,
     updatedAt: string,
   } | null,
 };
@@ -400,7 +400,7 @@ export type UpdateHouseholdMutation = {
   updateHousehold?:  {
     __typename: "Household",
     createdAt: string,
-    householdName?: string | null,
+    householdName: string,
     id: string,
     members?:  {
       __typename: "ModelUserConnection",
@@ -423,13 +423,14 @@ export type UpdateUserMutation = {
     household?:  {
       __typename: "Household",
       createdAt: string,
-      householdName?: string | null,
+      householdName: string,
       id: string,
       updatedAt: string,
     } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
+    owner?: string | null,
     updatedAt: string,
   } | null,
 };
@@ -442,7 +443,7 @@ export type OnCreateHouseholdSubscription = {
   onCreateHousehold?:  {
     __typename: "Household",
     createdAt: string,
-    householdName?: string | null,
+    householdName: string,
     id: string,
     members?:  {
       __typename: "ModelUserConnection",
@@ -455,6 +456,7 @@ export type OnCreateHouseholdSubscription = {
 export type OnCreateUserSubscriptionVariables = {
   filter?: ModelSubscriptionUserFilterInput | null,
   householdID?: string | null,
+  owner?: string | null,
 };
 
 export type OnCreateUserSubscription = {
@@ -465,13 +467,14 @@ export type OnCreateUserSubscription = {
     household?:  {
       __typename: "Household",
       createdAt: string,
-      householdName?: string | null,
+      householdName: string,
       id: string,
       updatedAt: string,
     } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
+    owner?: string | null,
     updatedAt: string,
   } | null,
 };
@@ -484,7 +487,7 @@ export type OnDeleteHouseholdSubscription = {
   onDeleteHousehold?:  {
     __typename: "Household",
     createdAt: string,
-    householdName?: string | null,
+    householdName: string,
     id: string,
     members?:  {
       __typename: "ModelUserConnection",
@@ -497,6 +500,7 @@ export type OnDeleteHouseholdSubscription = {
 export type OnDeleteUserSubscriptionVariables = {
   filter?: ModelSubscriptionUserFilterInput | null,
   householdID?: string | null,
+  owner?: string | null,
 };
 
 export type OnDeleteUserSubscription = {
@@ -507,13 +511,14 @@ export type OnDeleteUserSubscription = {
     household?:  {
       __typename: "Household",
       createdAt: string,
-      householdName?: string | null,
+      householdName: string,
       id: string,
       updatedAt: string,
     } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
+    owner?: string | null,
     updatedAt: string,
   } | null,
 };
@@ -526,7 +531,7 @@ export type OnUpdateHouseholdSubscription = {
   onUpdateHousehold?:  {
     __typename: "Household",
     createdAt: string,
-    householdName?: string | null,
+    householdName: string,
     id: string,
     members?:  {
       __typename: "ModelUserConnection",
@@ -539,6 +544,7 @@ export type OnUpdateHouseholdSubscription = {
 export type OnUpdateUserSubscriptionVariables = {
   filter?: ModelSubscriptionUserFilterInput | null,
   householdID?: string | null,
+  owner?: string | null,
 };
 
 export type OnUpdateUserSubscription = {
@@ -549,13 +555,14 @@ export type OnUpdateUserSubscription = {
     household?:  {
       __typename: "Household",
       createdAt: string,
-      householdName?: string | null,
+      householdName: string,
       id: string,
       updatedAt: string,
     } | null,
     householdID?: string | null,
     householdName?: string | null,
     id: string,
+    owner?: string | null,
     updatedAt: string,
   } | null,
 };

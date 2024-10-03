@@ -28,8 +28,9 @@ export const onCreateHousehold = /* GraphQL */ `subscription OnCreateHousehold($
 export const onCreateUser = /* GraphQL */ `subscription OnCreateUser(
   $filter: ModelSubscriptionUserFilterInput
   $householdID: String
+  $owner: String
 ) {
-  onCreateUser(filter: $filter, householdID: $householdID) {
+  onCreateUser(filter: $filter, householdID: $householdID, owner: $owner) {
     createdAt
     email
     household {
@@ -42,6 +43,7 @@ export const onCreateUser = /* GraphQL */ `subscription OnCreateUser(
     householdID
     householdName
     id
+    owner
     updatedAt
     __typename
   }
@@ -70,8 +72,9 @@ export const onDeleteHousehold = /* GraphQL */ `subscription OnDeleteHousehold($
 export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser(
   $filter: ModelSubscriptionUserFilterInput
   $householdID: String
+  $owner: String
 ) {
-  onDeleteUser(filter: $filter, householdID: $householdID) {
+  onDeleteUser(filter: $filter, householdID: $householdID, owner: $owner) {
     createdAt
     email
     household {
@@ -84,6 +87,7 @@ export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser(
     householdID
     householdName
     id
+    owner
     updatedAt
     __typename
   }
@@ -112,8 +116,9 @@ export const onUpdateHousehold = /* GraphQL */ `subscription OnUpdateHousehold($
 export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser(
   $filter: ModelSubscriptionUserFilterInput
   $householdID: String
+  $owner: String
 ) {
-  onUpdateUser(filter: $filter, householdID: $householdID) {
+  onUpdateUser(filter: $filter, householdID: $householdID, owner: $owner) {
     createdAt
     email
     household {
@@ -126,6 +131,7 @@ export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser(
     householdID
     householdName
     id
+    owner
     updatedAt
     __typename
   }
