@@ -23,7 +23,7 @@ const schema = a.schema({
       householdID: a.string(),
     })
     .authorization((allow) => [
-      allow.ownerDefinedIn("email"),
+      allow.ownerDefinedIn("householdID"),
     ]),
 })
 .authorization((allow) => [allow.resource(postConfirmation)]);
