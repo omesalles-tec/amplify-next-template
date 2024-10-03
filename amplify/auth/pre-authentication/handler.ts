@@ -6,6 +6,7 @@ import { ListUsersQueryVariables } from "../graphql/API"
 const client = generateClient()
 
 export const handler: PreAuthenticationTriggerHandler = async (event) => {
+  console.log("Pre-authentication trigger fired", event);
   if (!event.request.userAttributes["custom:householdName"]) {
     throw new Error("You must indicate a household name")
   }
