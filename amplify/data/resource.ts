@@ -14,6 +14,7 @@ specifies that any user authenticated via an API key can "create", "read",
 const schema = a.schema({
   Household: a
     .model({
+      id: a.id().required(),
       householdName: a.string(),
       members: a.hasMany("User", "householdID"),
     })
