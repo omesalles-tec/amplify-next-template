@@ -3,8 +3,8 @@ import { type Schema } from "../../data/resource";
 import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/data";
 import { env } from "$amplify/env/post-confirmation";
-import { createUser, createHousehold } from "./graphql/mutations";
-import { listHouseholds } from "./graphql/queries";
+import { createUser, createHousehold } from "../graphql/mutations";
+import { listHouseholds } from "../graphql/queries";
 
 Amplify.configure(
   {

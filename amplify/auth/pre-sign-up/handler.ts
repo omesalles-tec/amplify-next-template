@@ -1,6 +1,7 @@
 import type { PreSignUpTriggerHandler } from "aws-lambda"
 
 export const handler: PreSignUpTriggerHandler = async (event) => {
+  
   if (!event.request.userAttributes["custom:householdName"]) {
     throw new Error("You must indicate a household name")
   }
