@@ -16,12 +16,14 @@ const schema = a
         householdName: a.string(),
         household: a.belongsTo("Household", "householdID"),
       })
-      .authorization((allow) => [allow.ownerDefinedIn("householdID"),
+      .authorization((allow) => [
+        allow.owner(),
+        allow.ownerDefinedIn("householdID"),
         allow.publicApiKey()
       ]),
     Household: a.model({
-        id: a.id().required(),
-        householdName: a.string(),
+        /*id: a.id().required(),*/
+        householdName: a.string().required(),
         members: a.hasMany("User", "householdID"),
       })
       .authorization((allow) => [allow.publicApiKey()]),

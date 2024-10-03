@@ -40,61 +40,61 @@ const client = generateClient<Schema>({
 
 export const handler: PostConfirmationTriggerHandler = async (event) => {
   try {
-  const {
-    userName,
-    request: { userAttributes },
-  } = event;
+    const {
+      userName,
+      request: { userAttributes },
+    } = event;
 
-  const householdName = userAttributes["custom:householdName"] || null;
-  let householdID: string | null = null;
+    const householdName = userAttributes["custom:householdName"] || null;
+    let householdID: string | null = null;
 
-  // Check if the household already exists
-  if (householdName) {
-    const listHouseholdsResult = await client.graphql({
-      query: listHouseholds,
-      variables: {
-        filter: {
-          householdName: {
-            eq: householdName
-          }
-        }
-      }
-    });
-
-    const existingHousehold = listHouseholdsResult.data.listHouseholds?.items[0];
-
-    if (existingHousehold) {
-      householdID = existingHousehold.id;
-    } else {
-      // Create a new household if it doesn't exist
-      const createHouseholdResult = await client.graphql({
-        query: createHousehold,
+    // Check if the household already exists
+    if (householdName) {
+      const listHouseholdsResult = await client.graphql({
+        query: listHouseholds,
         variables: {
-          input: {
-            householdName: householdName,
+          filter: {
+            householdName: {
+              eq: householdName,
+            },
           },
         },
       });
 
-      householdID = createHouseholdResult.data.createHousehold?.id || null;
-    }
-  }
+      const existingHousehold =
+        listHouseholdsResult.data.listHouseholds?.items[0];
 
-  // Create a new user with the householdID
-  await client.graphql({
-    query: createUser,
-    variables: {
-      input: {
-        email: event.request.userAttributes.email,
-        householdID: householdID,
-        householdName: householdName,
-      },
+      if (existingHousehold) {
+        householdID = existingHousehold.id;
+      } else {
+        // Create a new household if it doesn't exist
+        const createHouseholdResult = await client.graphql({
+          query: createHousehold,
+          variables: {
+            input: {
+              householdName: householdName,
+            },
+          },
+        });
+
+        householdID = createHouseholdResult.data.createHousehold?.id || null;
+      }
+    }
+
+    // Create a new user with the householdID
+    await client.graphql({
+      query: createUser,
+      variables: {
+        input: {
+          email: event.request.userAttributes.email,
+          householdID: householdID,
+          householdName: householdName,
+        },
       },
     });
   } catch (error) {
-    console.error('Error creating user:', error);
+    console.error("Error creating user:", error);
     throw error;
   }
-
   return event;
 };
