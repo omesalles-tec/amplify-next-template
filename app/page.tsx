@@ -22,51 +22,33 @@ I18n.putVocabularies(translations);
 I18n.setLanguage("es");
 I18n.putVocabularies({
   es: {
-    "App successfully hosted":
-      "La App sea ha instalado exitosamente. Intenta crear un nuevo User",
-    "Review next steps of this tutorial":
-      "Revisa los siguientes pasos de este tutorial",
-    "User Name": "El usuario",
-    new: "nuevo",
+    "Household members":
+      "Miembros de la casa",
   },
 });
 
 export default function App() {
-  const [User, setUser] = useState<Array<Schema["User"]["type"]>>([]);
+  const [Users, setUsers] = useState<Array<Schema["User"]["type"]>>([]);
 
-  function listUser() {
+  function listUsers() {
     client.models.User.observeQuery().subscribe({
-      next: (data) => setUser([...data.items]),
+      next: (data) => setUsers([...data.items]),
     });
   }
 
   useEffect(() => {
-    listUser();
+    listUsers();
   }, []);
-
-  function createUser() {
-    client.models.User.create({
-      userName: window.prompt("User name"),
-    });
-  }
 
   return (
     <I18nProvider locale={LOCALE} messages={[messages]}>
       <main>
-        <h1>My User</h1>
-        <button onClick={createUser}>+ new</button>
+        <h1>Household members</h1>
         <ul>
-          {User.map((User) => (
-            <li key={User.id}>{User.userName}</li>
+          {Users.map((User) => (
+            <li key={User.id}>{User.email}</li>
           ))}
         </ul>
-        <div>
-          🥳 App successfully hosted. Try creating a new User.
-          <br />
-          <a href="https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/">
-            Review next steps of this tutorial.
-          </a>
-        </div>
       </main>
     </I18nProvider>
   );

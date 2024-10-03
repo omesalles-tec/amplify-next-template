@@ -20,11 +20,10 @@ const schema = a.schema({
     User: a
     .model({
       email: a.string(),
-      userName: a.string(),
       householdID: a.string(),
     })
     .authorization((allow) => [
-      allow.ownerDefinedIn("userName"),
+      allow.ownerDefinedIn("email"),
     ]),
 })
 .authorization((allow) => [allow.resource(postConfirmation)]);
