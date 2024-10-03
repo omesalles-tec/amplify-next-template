@@ -13,7 +13,7 @@ const schema = a
       .model({
         email: a.string().required(),
         householdID: a.id(),
-        household: a.belongsTo("Household", "id"),
+        household: a.belongsTo("Household", "householdID"),
       })
       .authorization((allow) => [allow.ownerDefinedIn("householdID")]),
     Household: a.model({
