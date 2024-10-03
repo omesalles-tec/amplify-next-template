@@ -11,12 +11,7 @@ export const auth = defineAuth({
     email: true,
   },
      
-  userAttributes: {
-    preferredUsername: {
-      mutable: true,
-      required: false
-    },
-        
+  userAttributes: {      
     "custom:householdName": {
       dataType: "String",
       mutable: false,
