@@ -80,7 +80,7 @@ export const handler: PostConfirmationTriggerHandler = async (event) => {
         householdID = createHouseholdResult.data.createHousehold?.id || null;
       }
     }
-
+    console.log("Household ID:", householdID);
     // Create a new user with the householdID
     await client.graphql({
       query: createUser,
