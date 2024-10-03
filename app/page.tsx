@@ -26,7 +26,7 @@ I18n.putVocabularies({
       "La App sea ha instalado exitosamente. Intenta crear un nuevo User",
     "Review next steps of this tutorial":
       "Revisa los siguientes pasos de este tutorial",
-    "User content": "El contenido del User",
+    "User Name": "El usuario",
     new: "nuevo",
   },
 });
@@ -46,7 +46,7 @@ export default function App() {
 
   function createUser() {
     client.models.User.create({
-      content: window.prompt("User content"),
+      userName: window.prompt("User name"),
     });
   }
 
@@ -57,7 +57,7 @@ export default function App() {
         <button onClick={createUser}>+ new</button>
         <ul>
           {User.map((User) => (
-            <li key={User.id}>{User.content}</li>
+            <li key={User.id}>{User.userName}</li>
           ))}
         </ul>
         <div>
