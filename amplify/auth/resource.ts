@@ -1,5 +1,6 @@
 import { defineAuth } from "@aws-amplify/backend";
 import { preSignUp } from './pre-sign-up/resource';
+import { postConfirmation } from "./post-confirmation/resource"
 
 /**
  * Define and configure your auth resource
@@ -16,14 +17,15 @@ export const auth = defineAuth({
       required: false
     },
         
-    "custom:household": {
+    "custom:householdName": {
       dataType: "String",
-      mutable: true,
+      mutable: false,
       maxLen: 24,
       minLen: 8,
     },
   },
   triggers: {
-    preSignUp
+    postConfirmation,
+    preSignUp,
   }
 });

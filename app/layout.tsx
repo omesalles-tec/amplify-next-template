@@ -57,14 +57,14 @@ export default function RootLayout({
       confirm_password: {
         order: 3,
       },
-      "custom:household": {
+      "custom:householdName": {
         placeholder: "Household name",
         label: "Household",
         order: 4,
       },
     },
     signIn: {
-      "custom:household": {
+      "custom:householdName": {
         placeholder: "Household name",
         label: "Household",
         order: 1,
