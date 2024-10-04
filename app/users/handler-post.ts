@@ -1,6 +1,7 @@
 import type { PostConfirmationTriggerHandler } from "aws-lambda";
 import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/data";
+/*
 import { createUser, createHousehold } from "../graphql/mutations";
 import { listHouseholds } from "$amplify/graphql/queries";
 import { env } from "process";
@@ -26,12 +27,12 @@ Amplify.configure(
           },
         }),
         clearCredentialsAndIdentityId: () => {
-          /* noop */
+          /* noop *//*
         },
       },
     },
   }
-);
+)
 
 const client = generateClient<Schema>({
   authMode: "iam",
@@ -97,3 +98,4 @@ export const handler: PostConfirmationTriggerHandler = async (event) => {
   }
   return event;
 };
+*/
