@@ -1,10 +1,9 @@
 import type { PostConfirmationTriggerHandler } from "aws-lambda";
-import { type Schema } from "../../data/resource";
 import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/data";
-import { env } from "$amplify/env/post-confirmation";
 import { createUser, createHousehold } from "../graphql/mutations";
-import { listHouseholds } from "../graphql/queries";
+import { listHouseholds } from "$amplify/graphql/queries";
+import { env } from "process";
 
 Amplify.configure(
   {
@@ -80,7 +79,6 @@ export const handler: PostConfirmationTriggerHandler = async (event) => {
         householdID = createHouseholdResult.data.createHousehold?.id || null;
       }
     }
-    console.log("Household ID:", householdID);
     // Create a new user with the householdID
     await client.graphql({
       query: createUser,

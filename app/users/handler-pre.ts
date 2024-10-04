@@ -1,18 +1,25 @@
 import type { PreAuthenticationTriggerHandler } from "aws-lambda"
+import { Amplify } from "aws-amplify";
+import outputs from "../../../amplify_outputs.json";
+import { type Schema } from "../../data/resource";
+import { env } from "$amplify/env/post-confirmation";
 import { generateClient } from "aws-amplify/api"
 import { listUsers } from "../graphql/queries"
 import { ListUsersQueryVariables } from "../graphql/API"
 
-const client = generateClient()
+Amplify.configure(outputs);
+
+const client = generateClient<Schema>({
+  authMode: "apiKey",
+});
 
 export const handler: PreAuthenticationTriggerHandler = async (event) => {
-  console.log("Pre-authentication trigger fired", event);
-  if (!event.request.userAttributes["custom:householdName"]) {
-    throw new Error("You must indicate a household name")
-  }
+  const householdName = event.request.validationData?.["custom:householdName"];
+  const email = event.request.validationData?.["email"];
 
-  const { email } = event.request.userAttributes
-  const householdName = event.request.userAttributes["custom:householdName"]
+  if (!householdName) {
+    throw new Error("You must indicate a household name");
+  }
 
   try {
     const variables: ListUsersQueryVariables = {
@@ -28,9 +35,8 @@ export const handler: PreAuthenticationTriggerHandler = async (event) => {
       query: listUsers,
       variables: variables
     })
-
-    if (result.data.listUsers.items.length > 0) {
-      throw new Error("Email or household name already exists")
+    if (result.data.listUsers.items.length === 0) {
+      throw new Error("Email or household don't exists")
     }
 
     return event

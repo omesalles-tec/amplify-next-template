@@ -46,36 +46,11 @@ export default function RootLayout({
       href: "/" + arr.slice(0, index + 1).join("/"),
     }));
 
-  const formFields = {
-    signUp: {
-      email: {
-        order: 1,
-      },
-      password: {
-        order: 2,
-      },
-      confirm_password: {
-        order: 3,
-      },
-      "custom:householdName": {
-        placeholder: "Household name",
-        label: "Household",
-        order: 4,
-      },
-    },
-    signIn: {
-      "custom:householdName": {
-        placeholder: "Household name",
-        label: "Household",
-        order: 1,
-      },
-    },    
-  };
 
   return (
     <html lang="en">
       <body >{/*className={inter.className}>*/}
-        <Authenticator formFields={formFields}>
+        <Authenticator>
           {({ signOut, user }) => (
             <I18nProvider locale={LOCALE} messages={[messages]}>
               <AppLayout

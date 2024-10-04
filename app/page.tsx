@@ -12,7 +12,7 @@ import { translations } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import "./../app/app.css";
 import "@cloudscape-design/global-styles/index.css";
-import { fetchUserAttributes } from 'aws-amplify/auth';
+import { fetchUserAttributes } from "aws-amplify/auth";
 
 Amplify.configure(outputs);
 
@@ -23,27 +23,28 @@ I18n.putVocabularies(translations);
 I18n.setLanguage("es");
 I18n.putVocabularies({
   es: {
-    "Household members":
-      "Miembros de la casa",
+    "Household members": "Miembros de la casa",
   },
 });
 
 export default function App() {
   const [Users, setUsers] = useState<Array<Schema["User"]["type"]>>([]);
-  const [loggedInUserHouseholdId, setLoggedInUserHouseholdId] = useState<string | null>(null);
+  const [loggedInUserHouseholdId, setLoggedInUserHouseholdId] = useState<
+    string | null
+  >(null);
 
   async function listUsers() {
     try {
       // Get the logged-in user's information
       const currentUser = await fetchUserAttributes();
-      const householdName = currentUser['custom:householdName'];
+      const householdName = currentUser["custom:householdName"];
       /* use householdName to get householdID from Household table */
       const { data } = await client.models.Household.list({
         filter: {
           householdName: {
-            eq: householdName
-          }
-        }
+            eq: householdName,
+          },
+        },
       });
       const householdID = data[0].id;
 
@@ -51,23 +52,23 @@ export default function App() {
         setLoggedInUserHouseholdId(householdID);
 
         const allUsers = await client.models.User.list();
-console.log('All users:', allUsers);
+        console.log("All users:", allUsers);
 
         // Query users with the same household ID
         const { data } = await client.models.User.list({
           filter: {
             householdID: {
-              eq: householdID
-            }
-          }
+              eq: householdID,
+            },
+          },
         });
         console.log(data);
         setUsers(data);
       } else {
-        console.error('Household ID not found for the logged-in user');
+        console.error("Household ID not found for the logged-in user");
       }
     } catch (error) {
-      console.error('Error fetching users:', error);
+      console.error("Error fetching users:", error);
     }
   }
 
@@ -81,7 +82,9 @@ console.log('All users:', allUsers);
         <h1>Household members</h1>
         <ul>
           {Users.map((User) => (
-            <li key={User.id}>{User.householdName} - {User.email}</li>
+            <li key={User.id}>
+              {User.householdName} - {User.email}
+            </li>
           ))}
         </ul>
       </main>
