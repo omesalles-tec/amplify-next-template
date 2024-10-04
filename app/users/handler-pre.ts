@@ -1,11 +1,12 @@
 import type { PreAuthenticationTriggerHandler } from "aws-lambda"
 import { Amplify } from "aws-amplify";
-import outputs from "../../../amplify_outputs.json";
+/* import outputs from "../../../amplify_outputs.json";
 import { type Schema } from "../../data/resource";
 import { env } from "$amplify/env/post-confirmation";
 import { generateClient } from "aws-amplify/api"
 import { listUsers } from "../graphql/queries"
 import { ListUsersQueryVariables } from "../graphql/API"
+
 
 Amplify.configure(outputs);
 
@@ -44,4 +45,4 @@ export const handler: PreAuthenticationTriggerHandler = async (event) => {
     console.error('Error checking user existence:', error)
     throw error
   }
-}
+}*/
