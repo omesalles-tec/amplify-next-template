@@ -1,16 +1,21 @@
-//const inter = Inter({ subsets: ["latin"] });
+"use client";
+import "@aws-amplify/ui-react/styles.css";
+import "./globals.css";
+import { Amplify } from "aws-amplify";
+import outputs from "@/amplify_outputs.json";
+import React from "react";
+
+Amplify.configure(outputs, { ssr: true });
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <html lang="en">
       <body>
-        {/*className={inter.className}>*/}
-          {children}
+        {children}
       </body>
     </html>
   );

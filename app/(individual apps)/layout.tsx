@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import ClientLayout from '@/app/components/clientLayout';
+import ShellLayout from '@/app/components/ShellLayout';
 
 //import { Inter } from "next/font/google";
 import "@/app/app.css";
@@ -23,9 +23,9 @@ export default function PageLayout({
 
   return (
     <>
-      <ClientLayout newPathname={newPathname} breadcrumbs={breadcrumbs}>
+      <ShellLayout newPathname={newPathname} breadcrumbs={breadcrumbs}>
         {children}
-      </ClientLayout>
+      </ShellLayout>
     </>
   );
 }

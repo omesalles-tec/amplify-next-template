@@ -8,13 +8,8 @@ import {
   Flashbar,
   SideNavigation,
 } from "@cloudscape-design/components";
-import { Amplify } from "aws-amplify";
-import outputs from "@/amplify_outputs.json";
 import { signOut } from "aws-amplify/auth";
 import { useRouter } from "next/navigation";
-Amplify.configure(outputs, {
-  ssr: true,
-});
 
 //import { Inter } from "next/font/google";
 import "@/app/app.css";
@@ -23,7 +18,7 @@ import "@cloudscape-design/global-styles/index.css";
 
 //const inter = Inter({ subsets: ["latin"] });
 
-const clientLayout = ({
+const ShellLayout = ({
   children,
   newPathname,
   breadcrumbs,
@@ -54,14 +49,14 @@ const clientLayout = ({
               text: "Service name",
             }}
             items={[
-              {type: "link", text: "Household", href: `${newPathname}/household`},
-              <Link href={`${newPathname}/ingredients`}>Ingredients</Link>,
-              { type: "link", text: "Stock", href: `${newPathname}/stock` },
-              { type: "link", text: "Menus", href: `${newPathname}/menus` },
-              { type: "link", text: "Recipes", href: `${newPathname}/recipes` },
-              { type: "link", text: "Shopping List", href: `${newPathname}/shopping-list`},
-              { type: "link", text: "Supermarkets", href: `${newPathname}/supermarkets`},
-              { type: "link", text: "Discounts", href: `${newPathname}/discounts`},
+              {type: "link", text: "Household", href: `/household`},
+              <Link href={`/ingredients`}>Ingredients</Link>,
+              { type: "link", text: "Stock", href: `/stock` },
+              { type: "link", text: "Menus", href: `/menus` },
+              { type: "link", text: "Recipes", href: `/recipes` },
+              { type: "link", text: "Shopping List", href: `/shopping-list`},
+              { type: "link", text: "Supermarkets", href: `/supermarkets`},
+              { type: "link", text: "Discounts", href: `/discounts`},
             ]}
           />
           <button type="button" onClick={handleSignOut}>
@@ -87,4 +82,4 @@ const clientLayout = ({
   );
 };
 
-export default clientLayout;
+export default ShellLayout;
