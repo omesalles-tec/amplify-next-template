@@ -5,7 +5,7 @@ import { Header, Container, ContentLayout } from '@cloudscape-design/components'
 const IngredientsPage: React.FC = () => {
   return (
     <div>
-        Ingredients
+        Prices
     </div>
   );
 };

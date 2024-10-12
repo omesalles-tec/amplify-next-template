@@ -1,31 +1,21 @@
 "use client";
-import { usePathname } from "next/navigation";
-import ShellLayout from '@/app/components/ShellLayout';
+import { useAuthenticator } from '@aws-amplify/ui-react';
+import Navigator from "@/app/components/Navigator";
+import Login from "@/app/components/Login";
 
-//import { Inter } from "next/font/google";
-import "@/app/app.css";
-
-//const inter = Inter({ subsets: ["latin"] });
-
-export default function PageLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const pathname = usePathname().split("/");
-  pathname.pop();
-  const newPathname = pathname.join("/");
-
-  const breadcrumbs = pathname.filter(Boolean).map((path, index, arr) => ({
-    text: path.charAt(0).toUpperCase() + path.slice(1),
-    href: "/" + arr.slice(0, index + 1).join("/"),
-  }));
+export default function Layout({ children }: { children: React.ReactNode }) {
+  const { user, signOut } = useAuthenticator(context => [context.user]);
 
   return (
     <>
-      <ShellLayout newPathname={newPathname} breadcrumbs={breadcrumbs}>
-        {children}
-      </ShellLayout>
+      {
+        !!user ? 
+        (<>
+          <Navigator />
+          <main>{children}</main>
+        </>) :
+        <Login />
+      }
     </>
   );
-}
+};

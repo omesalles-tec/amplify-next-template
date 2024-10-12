@@ -9,7 +9,7 @@ import { useEffect } from "react";
 function Login({ user }: { user?: AuthUser }) {
   useEffect(() => {
     if (user) {
-      redirect("/");
+      redirect("/household");
     }
   }, [user]);
   return null;

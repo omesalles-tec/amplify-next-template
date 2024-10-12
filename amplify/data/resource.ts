@@ -14,23 +14,15 @@ const schema = a
         email: a.string().required(),
         householdID: a.id(),
         householdName: a.string(),
-        //household: a.belongsTo("Household", "householdID"),
-      })
-      .authorization((allow) => [
-        allow.ownerDefinedIn("householdID"),
-        allow.owner().to(["read", "delete"]),
-        //allow.publicApiKey()
-      ]),
+      }),
     Household: a.model({
         /*id: a.id().required(),*/
         householdName: a.string().required(),
         //members: a.hasMany("User", "householdID"),
       })
-      .authorization((allow) => [allow.publicApiKey().to(['read']),
-    allow.owner()]),
   })
   .authorization((allow) => [allow.resource(postConfirmation), 
-    allow.resource(preTokenGeneration)]);
+    allow.resource(preTokenGeneration), allow.publicApiKey()]);
 
 export type Schema = ClientSchema<typeof schema>;
 
